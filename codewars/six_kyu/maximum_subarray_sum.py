@@ -1,4 +1,4 @@
-# Kadane’s Algorithm -Solution
+# Kadane’s Algorithm - Solution
 def max_sequence(arr):
     max_sum = 0
     current_sum = 0
