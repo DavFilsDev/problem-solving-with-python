@@ -26,3 +26,5 @@ tests = [
 
 for t in tests:
     print(t, "=>", luck_check(t))
+
+luck_check("")        # ValueError
