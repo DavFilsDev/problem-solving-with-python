@@ -1,14 +1,13 @@
-def longest_unique_substring(s):
-    seen = set()
-    left = 0
-    max_length = 0
+def max_subarray_sum(arr, k):
+    if len(arr) < k:
+        return None
 
-    for right in range(len(s)):
-        while s[right] in seen:
-            seen.remove(s[left])
-            left += 1
+    window_sum = sum(arr[:k])
+    max_sum = window_sum
 
-        seen.add(s[right])
-        max_length = max(max_length, right - left + 1)
+    for i in range(k, len(arr)):
+        window_sum += arr[i]        # add next element
+        window_sum -= arr[i - k]    # remove left element
+        max_sum = max(max_sum, window_sum)
 
-    return max_length
+    return max_sum
