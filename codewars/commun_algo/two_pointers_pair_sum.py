@@ -13,3 +13,6 @@ def has_pair_with_sum(nums, target):
             right -= 1
 
     return False
+
+print(has_pair_with_sum([1, 2, 3, 4, 6], 6))  # True
+print(has_pair_with_sum([1, 2, 3, 9], 8))    # False
