@@ -1,0 +1,62 @@
+import uuid
+
+# =========================
+# Simulated database
+# =========================
+USER_DB = {
+    "alice": {
+        "password": "123456",  # weak password
+        "refresh_token": None,
+        "device_id": None
+    }
+}
+
+# =========================
+# Login (vulnerable)
+# =========================
+def login(username, password, device_id):
+    user = USER_DB.get(username)
+
+    if user and user["password"] == password:
+        refresh_token = str(uuid.uuid4())
+        user["refresh_token"] = refresh_token
+        user["device_id"] = device_id
+        print(f" Login success. Refresh token issued: {refresh_token}")
+        return refresh_token
+
+    print(" Login failed")
+    return None
+
+
+# =========================
+# Refresh token usage (vulnerable)
+# =========================
+def refresh_access(username, refresh_token, device_id):
+    user = USER_DB.get(username)
+
+    if not user:
+        print(" Unknown user")
+        return
+
+    if user["refresh_token"] != refresh_token:
+        print(" Invalid refresh token")
+        return
+
+    #  No device binding check
+    print(" Access token issued (even for attacker!)")
+
+
+# =========================
+# Simulation
+# =========================
+if __name__ == "__main__":
+    print("=== STEP 1: Attacker brute-forces weak password ===")
+    stolen_token = login("alice", "123456", "victim-device")
+
+    print("\n=== STEP 2: Attacker steals refresh token via XSS ===")
+    print(f" Stolen refresh token: {stolen_token}")
+
+    print("\n=== STEP 3: Attacker reuses token from another device ===")
+    refresh_access("alice", stolen_token, "attacker-device")
+
+    print("\n ACCOUNT FULLY COMPROMISED ")
