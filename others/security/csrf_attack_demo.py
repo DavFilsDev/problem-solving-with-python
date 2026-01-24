@@ -1,6 +1,4 @@
-# =========================
 # CSRF Attack Simulation (Educational)
-# =========================
 
 # Simulated server state
 USER_SESSION = {
@@ -11,9 +9,7 @@ USER_SESSION = {
 USER_BALANCE = 1000
 
 
-# =========================
 # Vulnerable server endpoint
-# =========================
 def transfer_money_vulnerable(amount):
     global USER_BALANCE
     if USER_SESSION["authenticated"]:
@@ -23,9 +19,7 @@ def transfer_money_vulnerable(amount):
         print(" Not authenticated")
 
 
-# =========================
 # Protected server endpoint
-# =========================
 def transfer_money_protected(amount, csrf_token):
     global USER_BALANCE
     if not USER_SESSION["authenticated"]:
@@ -40,9 +34,7 @@ def transfer_money_protected(amount, csrf_token):
     print(f" Transfer successful! New balance: {USER_BALANCE}")
 
 
-# =========================
 # Simulation
-# =========================
 if __name__ == "__main__":
     print("=== Initial balance ===")
     print(USER_BALANCE)
