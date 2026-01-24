@@ -1,9 +1,7 @@
 import uuid
 import time
 
-# =========================
 # Simulated database
-# =========================
 USER_DB = {
     "alice": {
         "password": "S3cure!Pass#2025",
@@ -18,9 +16,7 @@ MAX_ATTEMPTS = 3
 LOCK_TIME = 10  # seconds
 
 
-# =========================
 # Secure login with rate limiting
-# =========================
 def login(username, password, device_id):
     user = USER_DB.get(username)
     now = time.time()
@@ -49,9 +45,7 @@ def login(username, password, device_id):
     return refresh_token
 
 
-# =========================
 # Secure refresh with rotation + binding
-# =========================
 def refresh_access(username, refresh_token, device_id):
     user = USER_DB.get(username)
 
@@ -73,9 +67,7 @@ def refresh_access(username, refresh_token, device_id):
     return new_token
 
 
-# =========================
 # Simulation
-# =========================
 if __name__ == "__main__":
     print("=== STEP 1: Brute force attempt ===")
     login("alice", "123456", "attacker-device")
