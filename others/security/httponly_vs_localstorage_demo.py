@@ -1,6 +1,4 @@
-# =========================
 # HttpOnly vs LocalStorage Attack Demo
-# =========================
 
 # Simulated browser storage
 LOCAL_STORAGE = {
@@ -14,9 +12,7 @@ COOKIES = {
     }
 }
 
-# =========================
 # XSS payload simulation
-# =========================
 def xss_attack():
     print("\n XSS payload executed")
 
@@ -32,17 +28,13 @@ def xss_attack():
         print(" HttpOnly cookie BLOCKED JS access")
 
 
-# =========================
 # Attacker uses token
-# =========================
 def attacker_use_token(token):
     print(f" Attacker authenticates using stolen token: {token}")
     print(" ACCOUNT TAKEOVER")
 
 
-# =========================
 # Simulation
-# =========================
 if __name__ == "__main__":
     print("=== LocalStorage scenario ===")
     xss_attack()
