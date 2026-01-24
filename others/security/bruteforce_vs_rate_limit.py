@@ -1,20 +1,14 @@
 import time
 
-# =========================
 # Simulated database
-# =========================
 REAL_PASSWORD = "admin123"
 
-# =========================
 # Insecure login (no protection)
-# =========================
 def insecure_login(password: str) -> bool:
     return password == REAL_PASSWORD
 
 
-# =========================
 # Secure login with rate limiting
-# =========================
 attempts = {}
 MAX_ATTEMPTS = 3
 BLOCK_TIME = 5  # seconds
@@ -46,9 +40,7 @@ def secure_login(password: str, user_id="attacker") -> bool:
         return False
 
 
-# =========================
 # Attack simulation
-# =========================
 if __name__ == "__main__":
     password_list = [
         "123456",
