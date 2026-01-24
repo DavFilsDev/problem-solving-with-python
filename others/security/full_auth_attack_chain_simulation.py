@@ -1,8 +1,6 @@
 import uuid
 
-# =========================
 # Simulated database
-# =========================
 USER_DB = {
     "alice": {
         "password": "123456",  # weak password
@@ -11,9 +9,7 @@ USER_DB = {
     }
 }
 
-# =========================
 # Login (vulnerable)
-# =========================
 def login(username, password, device_id):
     user = USER_DB.get(username)
 
@@ -28,9 +24,7 @@ def login(username, password, device_id):
     return None
 
 
-# =========================
 # Refresh token usage (vulnerable)
-# =========================
 def refresh_access(username, refresh_token, device_id):
     user = USER_DB.get(username)
 
@@ -46,9 +40,7 @@ def refresh_access(username, refresh_token, device_id):
     print(" Access token issued (even for attacker!)")
 
 
-# =========================
 # Simulation
-# =========================
 if __name__ == "__main__":
     print("=== STEP 1: Attacker brute-forces weak password ===")
     stolen_token = login("alice", "123456", "victim-device")
