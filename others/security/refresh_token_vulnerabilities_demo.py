@@ -1,6 +1,4 @@
-# =========================
 # Refresh Token Vulnerability Demo
-# =========================
 
 import uuid
 
@@ -11,9 +9,7 @@ USER_DB = {
     }
 }
 
-# =========================
 # Vulnerable implementation
-# =========================
 def login_vulnerable(user):
     refresh_token = str(uuid.uuid4())
     USER_DB[user]["refresh_token"] = refresh_token
@@ -30,9 +26,7 @@ def refresh_access_vulnerable(user, refresh_token):
         return False
 
 
-# =========================
 # Secure implementation (rotation)
-# =========================
 def login_secure(user):
     refresh_token = str(uuid.uuid4())
     USER_DB[user]["refresh_token"] = refresh_token
@@ -53,9 +47,7 @@ def refresh_access_secure(user, refresh_token):
     return new_refresh_token
 
 
-# =========================
 # Simulation
-# =========================
 if __name__ == "__main__":
     print("=== Vulnerable Flow ===")
     rt = login_vulnerable("user1")
