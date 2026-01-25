@@ -1,15 +1,11 @@
-# =========================
 # Token Binding to Device/IP Demo
-# =========================
 
 import uuid
 
 # Simulated database
 SESSIONS = {}
 
-# =========================
 # Login (issue bound token)
-# =========================
 def login(user, device_id, ip):
     refresh_token = str(uuid.uuid4())
     SESSIONS[refresh_token] = {
@@ -25,9 +21,7 @@ def login(user, device_id, ip):
     return refresh_token
 
 
-# =========================
 # Refresh access token
-# =========================
 def refresh_access(refresh_token, device_id, ip):
     session = SESSIONS.get(refresh_token)
 
@@ -46,9 +40,7 @@ def refresh_access(refresh_token, device_id, ip):
     print(" Access token issued successfully")
 
 
-# =========================
 # Simulation
-# =========================
 if __name__ == "__main__":
     print("=== Legitimate login ===")
     token = login(
