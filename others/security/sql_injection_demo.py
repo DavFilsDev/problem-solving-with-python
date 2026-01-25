@@ -1,8 +1,6 @@
 import sqlite3
 
-# =========================
 # Database setup
-# =========================
 def setup_db():
     conn = sqlite3.connect(":memory:")
     cursor = conn.cursor()
@@ -21,9 +19,7 @@ def setup_db():
     return conn
 
 
-# =========================
 # Vulnerable login (SQL Injection)
-# =========================
 def vulnerable_login(conn, username, password):
     cursor = conn.cursor()
 
@@ -39,9 +35,7 @@ def vulnerable_login(conn, username, password):
     return cursor.fetchone() is not None
 
 
-# =========================
 # Secure login (Parameterized query)
-# =========================
 def secure_login(conn, username, password):
     cursor = conn.cursor()
 
@@ -55,18 +49,16 @@ def secure_login(conn, username, password):
     return cursor.fetchone() is not None
 
 
-# =========================
 # Demo
-# =========================
 if __name__ == "__main__":
     conn = setup_db()
 
-    print("🔓 NORMAL LOGIN (vulnerable)")
+    print(" NORMAL LOGIN (vulnerable)")
     print(vulnerable_login(conn, "admin", "admin123"))
 
-    print("\n💣 SQL INJECTION ATTEMPT")
+    print("\n SQL INJECTION ATTEMPT")
     injected_password = "' OR '1'='1"
     print(vulnerable_login(conn, "admin", injected_password))
 
-    print("\n🛡 SECURE LOGIN WITH SAME INPUT")
+    print("\n SECURE LOGIN WITH SAME INPUT")
     print(secure_login(conn, "admin", injected_password))
