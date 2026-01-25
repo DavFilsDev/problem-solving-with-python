@@ -1,6 +1,4 @@
-# =========================
 # JWT CSRF Vulnerability Demo
-# =========================
 
 # Simulated server state
 USER_SESSION = {
@@ -11,9 +9,7 @@ USER_SESSION = {
 USER_BALANCE = 1000
 
 
-# =========================
 # Vulnerable JWT endpoint
-# =========================
 def transfer_vulnerable(amount, jwt_cookie):
     global USER_BALANCE
 
@@ -24,9 +20,7 @@ def transfer_vulnerable(amount, jwt_cookie):
         print(" Unauthorized")
 
 
-# =========================
 # Secure JWT endpoint
-# =========================
 def transfer_secure(amount, jwt_cookie, csrf_token):
     global USER_BALANCE
 
@@ -42,9 +36,7 @@ def transfer_secure(amount, jwt_cookie, csrf_token):
     print(f"💸 Secure transfer OK. Balance: {USER_BALANCE}")
 
 
-# =========================
 # Simulation
-# =========================
 if __name__ == "__main__":
     print("=== Initial balance ===")
     print(USER_BALANCE)
