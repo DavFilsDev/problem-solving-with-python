@@ -1,9 +1,7 @@
 import hashlib
 import bcrypt
 
-# =========================
 # Dictionary of common passwords
-# =========================
 PASSWORD_LIST = [
     "123456",
     "password",
@@ -14,21 +12,15 @@ PASSWORD_LIST = [
     "admin123"
 ]
 
-# =========================
 # Weak hashing (MD5) - BAD
-# =========================
 def md5_hash(password: str) -> str:
     return hashlib.md5(password.encode()).hexdigest()
 
-# =========================
 # Strong hashing (bcrypt) - GOOD
-# =========================
 def bcrypt_hash(password: str) -> bytes:
     return bcrypt.hashpw(password.encode(), bcrypt.gensalt())
 
-# =========================
 # Dictionary attack on MD5
-# =========================
 def dictionary_attack_md5(target_hash):
     print("\n Starting dictionary attack on MD5 hash...")
 
@@ -43,9 +35,7 @@ def dictionary_attack_md5(target_hash):
     print("\n Password not found")
     return None
 
-# =========================
 # Dictionary attack on bcrypt (fails)
-# =========================
 def dictionary_attack_bcrypt(target_hash):
     print("\n Starting dictionary attack on bcrypt hash...")
 
@@ -60,9 +50,7 @@ def dictionary_attack_bcrypt(target_hash):
     return None
 
 
-# =========================
 # Demo
-# =========================
 if __name__ == "__main__":
     real_password = "admin123"
 
