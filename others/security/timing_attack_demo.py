@@ -42,7 +42,7 @@ if __name__ == "__main__":
         "superSecret123",
     ]
 
-    print("⏱ Timing attack demonstration\n")
+    print(" Timing attack demonstration\n")
 
     print(" Insecure comparison:")
     for g in guesses:
